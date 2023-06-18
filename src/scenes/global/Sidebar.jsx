@@ -51,12 +51,13 @@ const SidebarSection = () => {
           color: "#868dfb !important",
           background: "none !important",
         },
+        "& .ps-menu-button .ps-active , .ps-menu-label .ps-active a": {
+          color: "#868dfb !important",
+          background: "none !important",
+        },
         "& .ps-menu-label a ": {
           color: "inherit !important",
           textDecoration: "none",
-        },
-        "& .ps-menu-label:visited ": {
-          color: "green !important",
         },
       }}
     >
