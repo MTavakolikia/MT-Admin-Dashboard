@@ -25,14 +25,12 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   return (
     <MenuItem
       active={selected === title}
-      style={{
-        color: colors.grey[100],
-      }}
       onClick={() => setSelected(title)}
       icon={icon}
     >
-      <Typography>{title}</Typography>
-      <Link to={to} />
+      <Link to={to}>
+        <Typography>{title}</Typography>
+      </Link>
     </MenuItem>
   );
 };
@@ -48,18 +46,19 @@ const SidebarSection = () => {
         "& .ps-sidebar-container ": {
           background: `${colors.primary[400]} !important`,
         },
-        "& .ps-icon-wrapper": {
-          backgroundColor: "transparent !important",
-        },
         "& .ps-inner-item": {
           padding: "5px 35px 5px 20px !important",
         },
-        "& .ps-menu-button:hover": {
+        "& .ps-menu-button:hover , .ps-menu-label a:hover": {
           color: "#868dfb !important",
           background: "none !important",
         },
-        "& .pro-menu-item.active": {
-          color: "#6870fa !important",
+        "& .ps-menu-label a ": {
+          color: "inherit !important",
+          textDecoration: "none",
+        },
+        "& .ps-menu-label:visited ": {
+          color: "green !important",
         },
       }}
     >
@@ -80,11 +79,6 @@ const SidebarSection = () => {
                 justifyContent="space-between"
                 alignItems="center"
                 ml="15px"
-                sx={{
-                  "& .ps-menu-button:hover": {
-                    color: "#868dfb !important",
-                  },
-                }}
               >
                 <Typography variant="h3" color={colors.grey[100]}>
                   ADMINIS
