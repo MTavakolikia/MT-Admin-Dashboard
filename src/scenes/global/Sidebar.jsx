@@ -20,8 +20,6 @@ import AvararImage from "../../assets/MT-Image.jpg";
 import { Link } from "react-router-dom";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
   return (
     <MenuItem
       active={selected === title}
@@ -219,7 +217,6 @@ const SidebarSection = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            <Link to={"/team"}>test</Link>
           </Box>
         </Menu>
       </Sidebar>
