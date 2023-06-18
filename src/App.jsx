@@ -13,6 +13,7 @@ import Line from "./scenes/Line";
 import Pie from "./scenes/Pie";
 import Bar from "./scenes/Bar";
 import Form from "./scenes/Form";
+import SidebarSection from "./scenes/global/Sidebar";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -22,6 +23,7 @@ function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <div className="app">
+            <SidebarSection />
             <main className="content">
               <Topbar />
               <Routes>
