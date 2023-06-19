@@ -21,15 +21,15 @@ import { Link } from "react-router-dom";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   return (
-    <MenuItem
-      active={selected === title}
-      onClick={() => setSelected(title)}
-      icon={icon}
-    >
-      <Link to={to}>
+    <Link to={to}>
+      <MenuItem
+        active={selected === title}
+        onClick={() => setSelected(title)}
+        icon={icon}
+      >
         <Typography>{title}</Typography>
-      </Link>
-    </MenuItem>
+      </MenuItem>{" "}
+    </Link>
   );
 };
 
@@ -47,17 +47,20 @@ const SidebarSection = () => {
         "& .ps-inner-item": {
           padding: "5px 35px 5px 20px !important",
         },
-        "& .ps-menu-button:hover , .ps-menu-label a:hover": {
+        "& .ps-menu-button:hover , .ps-menuitem-root .ps-menu-button:hover": {
           color: "#868dfb !important",
           background: "none !important",
         },
-        "& .ps-menu-button .ps-active , .ps-menu-label .ps-active a": {
-          color: "#868dfb !important",
-          background: "none !important",
+        "& .ps-menuitem-root .ps-menu-button .ps-active , .ps-menuitem-root .ps-active a":
+          {
+            color: "#868dfb !important",
+            background: "none !important",
+          },
+        "& a.ps-menu-button  ": {
+          color: "white !important",
         },
-        "& .ps-menu-label a ": {
-          color: "inherit !important",
-          textDecoration: "none",
+        "& .MuiBox-root  a  ": {
+          textDecoration: "none !important",
         },
       }}
     >
