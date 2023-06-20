@@ -1,3 +1,13 @@
+@font-face {
+    font-family: iranSansEN;
+    src: url(assets/fonts/IRANSans.ttf);
+}
+
+@font-face {
+    font-family: iranSansFA;
+    src: url(assets/fonts/IRANSansFa.ttf);
+}
+
 html,
 body,
 #root,
@@ -31,4 +41,12 @@ body,
 
 ::-webkit-scrollbar-thumb:hover {
     background-color: #555;
+}
+
+.iran-sans-en {
+    font-family: iranSansEN !important;
+}
+
+.iran-sans-fa {
+    font-family: iranSansFA !important;
 }

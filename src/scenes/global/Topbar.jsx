@@ -8,12 +8,17 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
+import { useTranslation } from "react-i18next";
 
 const Topbar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
-
+  const { i18n } = useTranslation();
+  const changeLanguageHandler = (e) => {
+    const languageValue = e.target.value;
+    i18n.changeLanguage(languageValue);
+  };
   return (
     <Box display="flex" justifyContent="space-between" p={2}>
       {/* SEARCH BAR */}
@@ -46,6 +51,34 @@ const Topbar = () => {
         <IconButton>
           <PersonOutlinedIcon />
         </IconButton>
+        <select
+          className="custom-select"
+          style={{
+            background: "inherit",
+            color: "inherit",
+            border: "white 1px solid",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+          onChange={changeLanguageHandler}
+        >
+          <option
+            style={{
+              color: "black",
+            }}
+            value="en"
+          >
+            English
+          </option>
+          <option
+            style={{
+              color: "black",
+            }}
+            value="fa"
+          >
+            فارسی
+          </option>
+        </select>
       </Box>
     </Box>
   );
