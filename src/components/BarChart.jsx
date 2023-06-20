@@ -2,8 +2,8 @@ import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
 import { mockBarData as data } from "../data/mockData";
+import { PropTypes } from "prop-types";
 
-// eslint-disable-next-line react/prop-types
 const BarChart = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -127,5 +127,7 @@ const BarChart = ({ isDashboard = false }) => {
     />
   );
 };
-
+BarChart.propTypes = {
+  isDashboard: PropTypes.boolean,
+};
 export default BarChart;
