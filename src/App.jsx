@@ -8,7 +8,7 @@ import Contacts from "./scenes/Contacts";
 import Invoices from "./scenes/Invoices";
 import Calendar from "./scenes/Calendar";
 import Geography from "./scenes/Geography";
-import FAQ from "./scenes/FAQ";
+import Faq from "./scenes/Faq";
 import Line from "./scenes/Line";
 import Pie from "./scenes/Pie";
 import Bar from "./scenes/Bar";
@@ -35,7 +35,7 @@ function App() {
                 <Route path="/bar" element={<Bar />} />
                 <Route path="/pie" element={<Pie />} />
                 <Route path="/line" element={<Line />} />
-                <Route path="/faq" element={<FAQ />} />
+                <Route path="/faq" element={<Faq />} />
                 <Route path="/geography" element={<Geography />} />
                 <Route path="/calendar" element={<Calendar />} />
               </Routes>

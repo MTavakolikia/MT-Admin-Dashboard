@@ -57,7 +57,7 @@ const SidebarSection = () => {
             background: "none !important",
           },
         "& a.ps-menu-button  ": {
-          color: "white !important",
+          color: `${colors.grey[200]} !important`,
         },
         "& .MuiBox-root  a  ": {
           textDecoration: "none !important",
