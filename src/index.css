@@ -15,7 +15,7 @@ body,
 .content {
     height: 100%;
     width: 100%;
-
+    font-family: iranSansEN !important;
 }
 
 .app {

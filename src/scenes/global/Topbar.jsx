@@ -1,6 +1,18 @@
-import { Box, IconButton, useTheme } from "@mui/material";
-import { useContext } from "react";
+import { useEffect, useState, useContext } from "react";
+import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
+import { languages } from "../../i18n";
 import { ColorModeContext, tokens } from "../../theme";
+
+import {
+  Box,
+  IconButton,
+  Menu,
+  MenuItem,
+  Typography,
+  useTheme,
+} from "@mui/material";
+
 import InputBase from "@mui/material/InputBase";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
@@ -8,17 +20,31 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
-import { useTranslation } from "react-i18next";
+import LanguageIcon from "@mui/icons-material/Language";
 
 const Topbar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
+  const [anchorElLang, setAnchorElLang] = useState(null);
   const { i18n } = useTranslation();
-  const changeLanguageHandler = (e) => {
-    const languageValue = e.target.value;
-    i18n.changeLanguage(languageValue);
+
+  const currentLanguageCode = Cookies.get("i18next") || "en";
+  const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
+
+  const handleOpenLangMenu = (event) => {
+    setAnchorElLang(event.currentTarget);
   };
+
+  const handleCloseLangMenu = (code) => {
+    setAnchorElLang(null);
+    i18n.changeLanguage(code);
+  };
+
+  useEffect(() => {
+    document.dir = currentLanguage.dir || "ltr";
+  }, [currentLanguage]);
+
   return (
     <Box display="flex" justifyContent="space-between" p={2}>
       {/* SEARCH BAR */}
@@ -27,7 +53,7 @@ const Topbar = () => {
         backgroundColor={colors.primary[400]}
         borderRadius="3px"
       >
-        <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search" />
+        <InputBase sx={{ ml: 2, mr: 2, flex: 1 }} placeholder="Search" />
         <IconButton type="button" sx={{ p: 1 }}>
           <SearchIcon />
         </IconButton>
@@ -45,40 +71,43 @@ const Topbar = () => {
         <IconButton>
           <NotificationsOutlinedIcon />
         </IconButton>
+        <IconButton onClick={handleOpenLangMenu}>
+          <LanguageIcon />
+        </IconButton>
         <IconButton>
           <SettingsOutlinedIcon />
         </IconButton>
         <IconButton>
           <PersonOutlinedIcon />
         </IconButton>
-        <select
-          className="custom-select"
-          style={{
-            background: "inherit",
-            color: "inherit",
-            border: "white 1px solid",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-          onChange={changeLanguageHandler}
-        >
-          <option
-            style={{
-              color: "black",
+
+        <Box sx={{ flexGrow: 0 }}>
+          <Menu
+            sx={{ mt: "35px" }}
+            id="menu-appbar"
+            anchorEl={anchorElLang}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
             }}
-            value="en"
-          >
-            English
-          </option>
-          <option
-            style={{
-              color: "black",
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
             }}
-            value="fa"
+            open={Boolean(anchorElLang)}
+            onClose={handleCloseLangMenu}
           >
-            فارسی
-          </option>
-        </select>
+            {languages.map((lang) => (
+              <MenuItem
+                key={lang.code}
+                onClick={() => handleCloseLangMenu(lang.code)}
+              >
+                <Typography m={"auto"}>{lang.name}</Typography>
+              </MenuItem>
+            ))}
+          </Menu>
+        </Box>
       </Box>
     </Box>
   );

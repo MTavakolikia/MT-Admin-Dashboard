@@ -16,7 +16,7 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
-import AvararImage from "../../assets/MT-Image.jpg";
+import AvararImage from "../../assets/images/MT-Image.jpg";
 import { Link } from "react-router-dom";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
@@ -71,7 +71,7 @@ const SidebarSection = () => {
             onClick={() => setIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
-              margin: "10px 0 20px 0",
+              margin: "20px 0 20px 0",
               color: colors.grey[100],
             }}
           >
@@ -80,7 +80,7 @@ const SidebarSection = () => {
                 display="flex"
                 justifyContent="space-between"
                 alignItems="center"
-                ml="15px"
+                m="15px"
               >
                 <Typography variant="h3" color={colors.grey[100]}>
                   ADMINIS
@@ -119,7 +119,7 @@ const SidebarSection = () => {
             </Box>
           )}
 
-          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+          <Box padding={isCollapsed ? undefined : "0 10%"}>
             <Item
               title="Dashboard"
               to="/"
