@@ -2,7 +2,7 @@
  
  In this repository you can find my cool admin dashboard that you can find a cool UI and different chart at it and its also support multi language , dark and light mode
  
-## What tools I used in this mini project?
+## What tools I used in this project?
 
  I used react.js , Marterial UI and other library like yup , full calendar , formik , nivo chart , emotion and also I used react-i18next for multi language
   
