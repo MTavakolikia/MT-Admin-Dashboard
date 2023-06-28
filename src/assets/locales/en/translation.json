@@ -1,4 +1,7 @@
 {
   "dashboard": "Dashboard",
-  "welcome": "Welcome to your dashboard"
+  "welcome": "Welcome to your dashboard",
+  "search": "Search",
+  "bar_chart": "Bar Chart",
+  "simple_bar_chart": "Simple Bar Chart"
 }

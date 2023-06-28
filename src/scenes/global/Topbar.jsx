@@ -28,6 +28,7 @@ const Topbar = () => {
   const colorMode = useContext(ColorModeContext);
   const [anchorElLang, setAnchorElLang] = useState(null);
   const { i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const currentLanguageCode = Cookies.get("i18next") || "en";
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
@@ -53,7 +54,7 @@ const Topbar = () => {
         backgroundColor={colors.primary[400]}
         borderRadius="3px"
       >
-        <InputBase sx={{ ml: 2, mr: 2, flex: 1 }} placeholder="Search" />
+        <InputBase sx={{ ml: 2, mr: 2, flex: 1 }} placeholder={t("search")} />
         <IconButton type="button" sx={{ p: 1 }}>
           <SearchIcon />
         </IconButton>
