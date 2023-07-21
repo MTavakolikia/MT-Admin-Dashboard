@@ -5,6 +5,8 @@ import { languages } from "../i18n";
 
 import { Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
 import LanguageIcon from "@mui/icons-material/Language";
+import { LanguageContext } from "../theme";
+import { useContext } from "react";
 
 const MultiLanguage = () => {
   const [anchorElLang, setAnchorElLang] = useState(null);
@@ -20,6 +22,8 @@ const MultiLanguage = () => {
   const handleOpenLangMenu = (event) => {
     setAnchorElLang(event.currentTarget);
   };
+
+  const changeLang = useContext(LanguageContext);
 
   useEffect(() => {
     document.dir = currentLanguage.dir || "ltr";
@@ -51,7 +55,10 @@ const MultiLanguage = () => {
           {languages.map((lang) => (
             <MenuItem
               key={lang.code}
-              onClick={() => handleCloseLangMenu(lang.code)}
+              onClick={() => {
+                handleCloseLangMenu(lang.code);
+                changeLang.toggleLanguage(lang.code);
+              }}
             >
               <Typography m={"auto"}>{lang.name}</Typography>
             </MenuItem>

@@ -1,6 +1,5 @@
 import { createContext, useState, useMemo } from "react";
-import { createTheme } from "@mui/material/styles";
-
+import { createTheme } from "@mui/material";
 // color design tokens export
 export const tokens = (mode) => ({
     ...(mode === "dark"
@@ -121,7 +120,7 @@ export const tokens = (mode) => ({
 });
 
 // mui theme settings
-export const themeSettings = (mode) => {
+export const themeSettings = (mode, font) => {
     const colors = tokens(mode);
     return {
         palette: {
@@ -163,30 +162,30 @@ export const themeSettings = (mode) => {
                 }),
         },
         typography: {
-            fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+            fontFamily: font,
             fontSize: 12,
             h1: {
-                fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+                fontFamily: font,
                 fontSize: 40,
             },
             h2: {
-                fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+                fontFamily: font,
                 fontSize: 32,
             },
             h3: {
-                fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+                fontFamily: font,
                 fontSize: 24,
             },
             h4: {
-                fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+                fontFamily: font,
                 fontSize: 20,
             },
             h5: {
-                fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+                fontFamily: font,
                 fontSize: 16,
             },
             h6: {
-                fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+                fontFamily: font,
                 fontSize: 14,
             },
         },
@@ -198,17 +197,28 @@ export const ColorModeContext = createContext({
     toggleColorMode: () => { },
 });
 
+export const LanguageContext = createContext({
+    toggleLanguage: () => { },
+});
+
 export const useMode = () => {
     const [mode, setMode] = useState("dark");
-
+    const [lang, setLang] = useState("en");
     const colorMode = useMemo(
         () => ({
-            toggleColorMode: () =>
-                setMode((prev) => (prev === "light" ? "dark" : "light")),
+            toggleColorMode: () => setMode((prev) => (prev === "light" ? "dark" : "light")),
         }),
         []
     );
 
-    const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
-    return [theme, colorMode];
+    const languageMode = useMemo(
+        () => ({
+            toggleLanguage: (lang) => { setLang(lang == "en" ? "iranSansEN" : "iranSansFA"); }
+        }),
+        []
+    );
+
+
+    const theme = useMemo(() => createTheme(themeSettings(mode, lang)), [mode, lang]);
+    return [theme, colorMode, languageMode];
 };
