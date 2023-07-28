@@ -3,7 +3,6 @@ import { ResponsiveLine } from "@nivo/line";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import { mockLineData as data } from "../data/mockData";
-import { PropTypes } from "prop-types";
 
 const LineChart = ({ isDashboard = false }) => {
   const theme = useTheme();
@@ -114,9 +113,6 @@ const LineChart = ({ isDashboard = false }) => {
       ]}
     />
   );
-};
-LineChart.propTypes = {
-  isDashboard: PropTypes.boolean,
 };
 
 export default LineChart;

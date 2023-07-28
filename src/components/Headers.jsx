@@ -9,7 +9,7 @@ const Header = ({ title, subtitle }) => {
   return (
     <Box
       mb="30px"
-      classname={i18n.lng === "en" ? "iran-sans-en" : "iran-sans-fa"}
+      className={i18n.lng === "en" ? "iran-sans-en" : "iran-sans-fa"}
     >
       <Typography
         variant="h2"

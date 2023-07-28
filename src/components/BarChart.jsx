@@ -1,8 +1,8 @@
+/* eslint-disable react/prop-types */
 import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
 import { mockBarData as data } from "../data/mockData";
-import { PropTypes } from "prop-types";
 
 const BarChart = ({ isDashboard = false }) => {
   const theme = useTheme();
@@ -127,7 +127,5 @@ const BarChart = ({ isDashboard = false }) => {
     />
   );
 };
-BarChart.propTypes = {
-  isDashboard: PropTypes.boolean,
-};
+
 export default BarChart;

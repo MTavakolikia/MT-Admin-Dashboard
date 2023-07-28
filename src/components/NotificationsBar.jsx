@@ -32,9 +32,9 @@ const NotificationsBar = () => {
       onKeyDown={() => setISOpen(false)}
     >
       <List>
-        {notficationsList.map((text) => (
+        {notficationsList.map((text, index) => (
           <>
-            <ListItem key={text} disablePadding>
+            <ListItem key={index + Math.random(5)} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
                   <NotificationsOutlinedIcon color="info" />

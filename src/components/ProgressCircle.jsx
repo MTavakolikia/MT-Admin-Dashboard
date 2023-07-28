@@ -20,7 +20,7 @@ const ProgressCircle = ({ progress = "0.75", size = "40" }) => {
   );
 };
 ProgressCircle.propTypes = {
-  progress: PropTypes.number,
-  size: PropTypes.number,
+  progress: PropTypes.string,
+  size: PropTypes.string,
 };
 export default ProgressCircle;
